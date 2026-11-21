@@ -19,9 +19,10 @@
  addEventListener('touchend',function(e){if(ty===null)return;var dy=e.changedTouches[0].clientY-ty;ty=null;if(dy<-80)down();else if(dy>80)up(e.target)},{passive:true});
  addEventListener('keydown',function(e){if(/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||'')))return;
   if(e.key==='ArrowDown'||e.key==='PageDown')down();else if(e.key==='ArrowUp'||e.key==='PageUp')up(e.target)});
+ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||a.target)return;var u=a.getAttribute('href');if(NEXT&&u===NEXT){try{sessionStorage.setItem('swipe','down|'+Date.now())}catch(x){}}});
  /* arrival: cross-document view transition when supported (smooth slide, no white flash), simple fade-in otherwise */
  var f=null;try{history.scrollRestoration='manual';var _s=(sessionStorage.getItem('swipe')||'').split('|');if(_s[1]&&Date.now()-(+_s[1])<4000)f=_s[0];sessionStorage.removeItem('swipe')}catch(e){}
- addEventListener('pagereveal',function(e){if(!e.viewTransition)return;document.documentElement.classList.add(f==='up'?'vt-up':'vt-down');e.viewTransition.finished.then(function(){document.documentElement.classList.remove('vt-up','vt-down')})});
+ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;if(!f){try{e.viewTransition.skipTransition()}catch(x){}return}document.documentElement.classList.add(f==='up'?'vt-up':'vt-down');e.viewTransition.finished.then(function(){document.documentElement.classList.remove('vt-up','vt-down')})});
  if(f){
   if(!VT)document.documentElement.animate([{transform:'translateY('+(f==='down'?70:-70)+'px)',opacity:0},{transform:'none',opacity:1}],{duration:300,easing:'ease-out'})}
 })();

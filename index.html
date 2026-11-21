@@ -177,7 +177,7 @@ html.vt-up::view-transition-new(root){animation-name:vt-new-up}
 @keyframes vt-old-up{to{transform:translateY(100%)}}
 @keyframes vt-new-up{from{transform:translateY(-100%)}}
 </style>
-<script>try{var _s=(sessionStorage.getItem("swipe")||"").split("|");if(_s[1]&&Date.now()-(+_s[1])<4000)window.ARR=true;if(sessionStorage.getItem("intro-seen"))window.ARR=true;history.scrollRestoration="manual"}catch(e){}</script>
+<script>try{var _s=(sessionStorage.getItem("swipe")||"").split("|");if(_s[1]&&Date.now()-(+_s[1])<4000)window.ARR=true;if(sessionStorage.getItem("intro-seen")||window.name==="cz-intro")window.ARR=true;else{sessionStorage.setItem("intro-seen","1");window.name="cz-intro"}history.scrollRestoration="manual"}catch(e){}</script>
 </head>
 <body>
 <div class="sheet" id="sheet">
@@ -431,6 +431,7 @@ function buildFrame(){
   var C=[[x0,y0],[x1,y0],[x1,y1],[x0,y1],[x0,y0]];
   for(var k=0;k<4;k++){var a=C[k],b=C[k+1];for(var u=0;u<=6;u++){var t=u/6;pts.push([a[0]+(b[0]-a[0])*t+(u&&u<6?j(1.4):0)+o,a[1]+(b[1]-a[1])*t+(u&&u<6?j(1.4):0)+o])}}
   line(pts,cls)}
+ var m=18;rect(m,m,W-m,H-m,0,'');
  var tb=document.querySelector('.tblock');
  if(tb&&getComputedStyle(tb).display!=='none'){var r=tb.getBoundingClientRect();rect(r.left,r.top,r.right,r.bottom,0,'');
   var rows=tb.children.length;for(var i=1;i<rows;i++){var y=r.top+(r.height*i/rows);line([[r.left,y],[r.right,y]],'')}}
@@ -524,7 +525,7 @@ document.addEventListener('keydown',skip);
 document.getElementById('rep').onclick=function(e){e.stopPropagation();play()};
 addEventListener('resize',function(){fxSize();if(boxEl&&state==='intro'){buildFrame();buildBox();buildHeader();setProg(0)}});
 function instant(){paper.classList.add('fast');paper.classList.remove('boot','lock');blue.style.display='none';render(FULL);state='done';document.getElementById('skip').style.opacity=0;startBlink();requestAnimationFrame(function(){requestAnimationFrame(function(){paper.classList.remove('fast')})})}
-if(window.ARR){instant()}else{try{sessionStorage.setItem('intro-seen','1')}catch(e){}(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){play()})}
+if(window.ARR){instant()}else{(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){play()})}
 })();
 </script>
 
