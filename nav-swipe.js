@@ -7,7 +7,7 @@
  function scrollableUp(el){for(;el&&el!==document.body&&el!==document.documentElement;el=el.parentElement){var cs=getComputedStyle(el);if(/(auto|scroll)/.test(cs.overflowY)&&el.scrollTop>0)return true}return false}
  function atBottom(){return innerHeight+scrollY>=document.documentElement.scrollHeight-160}
  var VT=('onpagereveal' in window);
- function go(url,dir){if(busy)return;busy=true;try{sessionStorage.setItem('swipe',dir)}catch(e){}
+ function go(url,dir){if(busy)return;busy=true;try{sessionStorage.setItem('swipe',dir+'|'+Date.now())}catch(e){}
   if(VT){location.href=url;return}
   var a=document.documentElement.animate([{transform:'none',opacity:1},{transform:'translateY('+(dir==='down'?-70:70)+'px)',opacity:0}],{duration:240,easing:'ease-in',fill:'forwards'});
   a.onfinish=function(){location.href=url}}
@@ -20,8 +20,8 @@
  addEventListener('keydown',function(e){if(/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||'')))return;
   if(e.key==='ArrowDown'||e.key==='PageDown')down();else if(e.key==='ArrowUp'||e.key==='PageUp')up(e.target)});
  /* arrival: cross-document view transition when supported (smooth slide, no white flash), simple fade-in otherwise */
- var f=null;try{f=sessionStorage.getItem('swipe')}catch(e){}
+ var f=null;try{history.scrollRestoration='manual';var _s=(sessionStorage.getItem('swipe')||'').split('|');if(_s[1]&&Date.now()-(+_s[1])<4000)f=_s[0];sessionStorage.removeItem('swipe')}catch(e){}
  addEventListener('pagereveal',function(e){if(!e.viewTransition)return;document.documentElement.classList.add(f==='up'?'vt-up':'vt-down');e.viewTransition.finished.then(function(){document.documentElement.classList.remove('vt-up','vt-down')})});
- if(f){setTimeout(function(){try{sessionStorage.removeItem('swipe')}catch(e){}},1500);
+ if(f){
   if(!VT)document.documentElement.animate([{transform:'translateY('+(f==='down'?70:-70)+'px)',opacity:0},{transform:'none',opacity:1}],{duration:300,easing:'ease-out'})}
 })();
