@@ -170,10 +170,9 @@ body{margin:0}
 
 <div>
 <div style="display: flex; flex-direction: column">
-<a class="plink" href="index.html"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">home</span></a>
 <a class="plink" href="mailto:chloezhang0523@gmail.com"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">email</span></a>
-<a class="plink" href="https://www.linkedin.com/in/ziyan-zhang-chloe" target="_blank" rel="noopener"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">linkedin</span></a>
-<a class="plink" href="https://github.com/chloe0015" target="_blank" rel="noopener"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">github</span></a>
+<a class="plink" href="#" target="_blank" rel="noopener"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">linkedin</span></a>
+<a class="plink" href="#" target="_blank" rel="noopener"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">github</span></a>
 <a class="plink" href="#" target="_blank" rel="noopener"><span class="chev" aria-hidden="true">&gt;</span><span class="ptxt">resume</span></a>
 </div>
 </div>
@@ -569,7 +568,7 @@ body{margin:0}
 class App {
 constructor() {
 this.props = { accent: '#FF6B1A' };
-this.state = { drawer: false, accent: ['#FF6B1A', '#F0574D', '#4FD1A1', '#6C8CFF', '#B48CFF'][Math.floor(Math.random() * 5)], dark: false };
+this.state = { drawer: false, accent: (function () { var P = ['#FF6B1A', '#F0574D', '#4FD1A1', '#6C8CFF', '#B48CFF']; try { var a = localStorage.getItem('cz-accent'); if (a && P.indexOf(a.toUpperCase()) >= 0) return a.toUpperCase(); } catch (e) {} return P[Math.floor(Math.random() * 5)]; })(), dark: false };
 this._torn = false;
 }
 setState(p) { if (typeof p === 'function') p = p(this.state); Object.assign(this.state, p); this.apply(); }
@@ -582,6 +581,7 @@ const T = st.dark
 : { page: '#F4F3F1', card: '#FFFFFF', ink: '#151515', inkrgb: '21,21,21', ink2: '#3A3836', ink3: '#5C5A57', ink4: '#8B8985', ph: '#ECEAE6' };
 const r = document.getElementById('root').style;
 r.setProperty('--accent', accent);
+try { localStorage.setItem('cz-accent', accent); } catch (e) {}
 Object.keys(T).forEach((k) => r.setProperty('--' + k, T[k]));
 document.querySelector('.panel').classList.toggle('open', st.drawer);
 document.querySelector('.scrim').classList.toggle('open', st.drawer);
@@ -1104,5 +1104,6 @@ build();upd();setTimeout(function(){build();upd();},600);
 })();
 
 </script>
+<script src="nav-swipe.js" data-up="home.html"></script>
 </body>
 </html>

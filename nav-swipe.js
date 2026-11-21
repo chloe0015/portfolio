@@ -5,7 +5,7 @@
  var me=document.currentScript,NEXT=me&&me.getAttribute('data-down'),PREV=me&&me.getAttribute('data-up'),busy=false,acc=0,accT=0,ty=null;
  function introRunning(){var b=document.getElementById('blue');return !!b&&b.style.display!=='none'}
  function scrollableUp(el){for(;el&&el!==document.body&&el!==document.documentElement;el=el.parentElement){var cs=getComputedStyle(el);if(/(auto|scroll)/.test(cs.overflowY)&&el.scrollTop>0)return true}return false}
- function atBottom(){return innerHeight+scrollY>=document.documentElement.scrollHeight-2}
+ function atBottom(){return innerHeight+scrollY>=document.documentElement.scrollHeight-160}
  function go(url,dir){if(busy)return;busy=true;try{sessionStorage.setItem('swipe',dir)}catch(e){}
   var a=document.documentElement.animate([{transform:'none',opacity:1},{transform:'translateY('+(dir==='down'?-70:70)+'px)',opacity:0}],{duration:240,easing:'ease-in',fill:'forwards'});
   a.onfinish=function(){location.href=url}}
