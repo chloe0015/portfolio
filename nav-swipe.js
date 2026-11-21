@@ -1,6 +1,6 @@
 /* Swipe / scroll between the two pages.
-   home.html : <script src="nav-swipe.js" data-down="index.html"></script>
-   index.html: <script src="nav-swipe.js" data-up="home.html"></script> */
+   index.html (home): <script src="nav-swipe.js" data-down="work.html"></script>
+   work.html: <script src="nav-swipe.js" data-up="index.html"></script> */
 (function(){
  var me=document.currentScript,NEXT=me&&me.getAttribute('data-down'),PREV=me&&me.getAttribute('data-up'),busy=false,acc=0,accT=0,ty=null;
  function introRunning(){var b=document.getElementById('blue');return !!b&&b.style.display!=='none'}
