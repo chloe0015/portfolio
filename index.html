@@ -137,6 +137,18 @@ body{margin:0}
 .pbar .ptab .en{font-family:'Pixelify Sans',monospace;font-size:13px;font-weight:600;letter-spacing:0}
 
 </style>
+<style>
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal;animation-duration:.6s;animation-timing-function:cubic-bezier(.65,0,.25,1);animation-fill-mode:both}
+::view-transition-old(root){animation-name:vt-old-down}
+::view-transition-new(root){animation-name:vt-new-down}
+html.vt-up::view-transition-old(root){animation-name:vt-old-up}
+html.vt-up::view-transition-new(root){animation-name:vt-new-up}
+@keyframes vt-old-down{to{transform:translateY(-100%)}}
+@keyframes vt-new-down{from{transform:translateY(100%)}}
+@keyframes vt-old-up{to{transform:translateY(100%)}}
+@keyframes vt-new-up{from{transform:translateY(-100%)}}
+</style>
 </head>
 <body>
 

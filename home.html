@@ -165,6 +165,19 @@ h1 em{font-style:italic}
 }
 </style>
 
+<style>
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal;animation-duration:.6s;animation-timing-function:cubic-bezier(.65,0,.25,1);animation-fill-mode:both}
+::view-transition-old(root){animation-name:vt-old-down}
+::view-transition-new(root){animation-name:vt-new-down}
+html.vt-up::view-transition-old(root){animation-name:vt-old-up}
+html.vt-up::view-transition-new(root){animation-name:vt-new-up}
+@keyframes vt-old-down{to{transform:translateY(-100%)}}
+@keyframes vt-new-down{from{transform:translateY(100%)}}
+@keyframes vt-old-up{to{transform:translateY(100%)}}
+@keyframes vt-new-up{from{transform:translateY(-100%)}}
+</style>
+<script>try{if(sessionStorage.getItem("swipe"))window.ARR=true}catch(e){}</script>
 </head>
 <body>
 <div class="sheet" id="sheet">
@@ -511,7 +524,8 @@ document.addEventListener('click',skip);
 document.addEventListener('keydown',skip);
 document.getElementById('rep').onclick=function(e){e.stopPropagation();play()};
 addEventListener('resize',function(){fxSize();if(boxEl&&state==='intro'){buildFrame();buildBox();buildHeader();setProg(0)}});
-(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){play()});
+function instant(){paper.classList.add('fast');paper.classList.remove('boot','lock');blue.style.display='none';render(FULL);state='done';document.getElementById('skip').style.opacity=0;startBlink();requestAnimationFrame(function(){requestAnimationFrame(function(){paper.classList.remove('fast')})})}
+if(window.ARR){instant()}else{(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){play()})}
 })();
 </script>
 
