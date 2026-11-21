@@ -219,7 +219,7 @@ function pf(){
  return '<svg class="pf" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+path(0)+path(1.8)+'</svg>'}
 function rulers(){return ''}
 function tpl(bp){
- var s=rulers()+'<svg class="sfr" id="fr" aria-hidden="true"></svg><div class="tblock"><b>CHLOE ZHANG</b><span>PORTFOLIO · 2026</span><span>SHEET 1 / 1 · REV A</span></div><div class="wrap"><header class="top"><a class="logo" href="#">CZ</a>'+(bp?'<i class="navph a"><b>NAV 01</b></i><i class="navph b"><b>NAV 02</b></i>':'')+'<nav class="navs"><a href="work.html">Work</a><a href="work.html">About</a><a href="mailto:chloezhang0523@gmail.com">Contact</a><a href="https://www.linkedin.com/in/ziyan-zhang-chloe" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/chloe0015" target="_blank" rel="noopener">GitHub ↗</a></nav><svg class="box hd" id="hd" aria-hidden="true"></svg><b class="pcn tg" id="tg0">NAV 01</b><b class="pcn tg" id="tg1">NAV 02</b></header><section class="hero">';
+ var s=rulers()+'<svg class="sfr" id="fr" aria-hidden="true"></svg><div class="tblock"><b>CHLOE ZHANG</b><span>PORTFOLIO · 2026</span><span>SHEET 1 / 1 · REV A</span></div><div class="wrap"><header class="top"><a class="logo" href="#">CZ</a>'+(bp?'<i class="navph a"><b>NAV 01</b></i><i class="navph b"><b>NAV 02</b></i>':'')+'<nav class="navs"><a href="index.html">Work</a><a href="index.html">About</a><a href="mailto:chloezhang0523@gmail.com">Contact</a><a href="https://www.linkedin.com/in/ziyan-zhang-chloe" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/chloe0015" target="_blank" rel="noopener">GitHub ↗</a></nav><svg class="box hd" id="hd" aria-hidden="true"></svg><b class="pcn tg" id="tg0">NAV 01</b><b class="pcn tg" id="tg1">NAV 02</b></header><section class="hero">';
  function pw(cls,tag,inner,label){return bp?'<'+tag+' class="'+cls+' pw"><span class="txt">'+inner+'</span><i class="ph"><b>'+label+'</b></i></'+tag+'>':'<'+tag+' class="'+cls+'">'+inner+'</'+tag+'>'}
  s+='<p class="eyebrow" id="ty0"></p><h1 id="ty1"></h1><p class="sub" id="ty2"></p><svg class="box" id="box" aria-hidden="true"></svg><b class="pcn" id="pcn">0%</b>';
  s+='</section><div class="pets">';
@@ -497,5 +497,6 @@ addEventListener('resize',function(){fxSize();if(boxEl&&state==='intro'){buildFr
 })();
 </script>
 
+<script src="nav-swipe.js" data-down="index.html"></script>
 </body>
 </html>
