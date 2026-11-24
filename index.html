@@ -180,6 +180,17 @@ html.vt-up::view-transition-new(root){animation-name:vt-new-up}
 @keyframes vt-new-down{from{transform:translateY(100%)}}
 @keyframes vt-old-up{to{transform:translateY(100%)}}
 @keyframes vt-new-up{from{transform:translateY(-100%)}}
+
+/* logo: hover turns into the blueprint owl icon */
+.logo{position:relative;overflow:hidden}
+.paper .logo,.paper .logo *{transition:background-color .2s,border-color .2s,color .2s,opacity .2s}
+.logo .ow{position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;opacity:0}
+.logo::before,.logo::after{content:"";position:absolute;pointer-events:none;opacity:0;transition:opacity .2s}
+.logo::before{inset:0;background-image:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);background-size:9px 9px}
+.logo::after{inset:3px;border:1px solid rgba(255,255,255,.6)}
+.paper .logo:hover,.paper .logo:focus-visible{background:#2B5CF0;border-color:#2B5CF0}
+.logo:hover .cz,.logo:focus-visible .cz{opacity:0}
+.logo:hover .ow,.logo:focus-visible .ow,.logo:hover::before,.logo:hover::after,.logo:focus-visible::before,.logo:focus-visible::after{opacity:1}
 </style>
 <script>try{var _s=(sessionStorage.getItem("swipe")||"").split("|");if(_s[1]&&Date.now()-(+_s[1])<4000)window.ARR=true;if(sessionStorage.getItem("intro-seen")||window.name==="cz-intro")window.ARR=true;else{sessionStorage.setItem("intro-seen","1");window.name="cz-intro"}history.scrollRestoration="manual"}catch(e){}</script>
 </head>
@@ -240,7 +251,7 @@ function pf(){
  return '<svg class="pf" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+path(0)+path(1.8)+'</svg>'}
 function rulers(){return ''}
 function tpl(bp){
- var s=rulers()+'<svg class="sfr" id="fr" aria-hidden="true"></svg><div class="tblock"><b>CHLOE ZHANG</b><span>PORTFOLIO · 2026</span><span>SHEET 1 / 1 · REV A</span></div><div class="wrap"><header class="top"><a class="logo" href="#">CZ</a>'+(bp?'<i class="navph a"><b>NAV 01</b></i><i class="navph b"><b>NAV 02</b></i>':'')+'<nav class="navs"><a href="work.html">Work</a><a href="work.html">About</a><a href="mailto:chloezhang0523@gmail.com">Contact</a><a href="https://www.linkedin.com/in/ziyan-zhang-chloe" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/chloe0015" target="_blank" rel="noopener">GitHub ↗</a></nav><svg class="box hd" id="hd" aria-hidden="true"></svg><b class="pcn tg" id="tg0">NAV 01</b><b class="pcn tg" id="tg1">NAV 02</b></header><section class="hero">';
+ var s=rulers()+'<svg class="sfr" id="fr" aria-hidden="true"></svg><div class="tblock"><b>CHLOE ZHANG</b><span>PORTFOLIO · 2026</span><span>SHEET 1 / 1 · REV A</span></div><div class="wrap"><header class="top"><a class="logo" href="#" aria-label="Home"><span class="cz">CZ</span><svg class="ow" viewBox="-1 1.5 66 66" aria-hidden="true"><path d="M14 18C12 12 13 8 17 5C19 9 21 12 24 13C29 11 35 11 40 13C43 11 45 8 47 5C51 8 52 13 50 19C55 27 56 40 51 50C47 58 39 61 32 61C25 61 17 58 13 50C8 40 9 27 14 18Z" fill="rgba(255,255,255,.24)" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 22C29 16 18 15 14 22C11 29 15 37 23 38C27 38 30 36 32 34C34 36 37 38 41 38C49 37 53 29 50 22C46 15 35 16 32 22Z" fill="#fff"/><ellipse cx="23" cy="28" rx="3" ry="3.5" fill="#2B5CF0"/><ellipse cx="41" cy="28" rx="3" ry="3.5" fill="#2B5CF0"/><path d="M27.5 34Q32 32.8 36.5 34L32 43Z" fill="#fff"/></svg></a>'+(bp?'<i class="navph a"><b>NAV 01</b></i><i class="navph b"><b>NAV 02</b></i>':'')+'<nav class="navs"><a href="work.html">Work</a><a href="work.html">About</a><a href="mailto:chloezhang0523@gmail.com">Contact</a><a href="https://www.linkedin.com/in/ziyan-zhang-chloe" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/chloe0015" target="_blank" rel="noopener">GitHub ↗</a></nav><svg class="box hd" id="hd" aria-hidden="true"></svg><b class="pcn tg" id="tg0">NAV 01</b><b class="pcn tg" id="tg1">NAV 02</b></header><section class="hero">';
  function pw(cls,tag,inner,label){return bp?'<'+tag+' class="'+cls+' pw"><span class="txt">'+inner+'</span><i class="ph"><b>'+label+'</b></i></'+tag+'>':'<'+tag+' class="'+cls+'">'+inner+'</'+tag+'>'}
  s+='<p class="eyebrow" id="ty0"></p><h1 id="ty1"></h1><p class="sub" id="ty2"></p><svg class="box" id="box" aria-hidden="true"></svg><b class="pcn" id="pcn">0%</b>';
  s+='</section><div class="pets">';
