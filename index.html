@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Chloe Zhang | Interaction designer who can code</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Portfolio of Chloe Zhang, an interaction designer who can code. MA Interaction Design at GWU, BSc Computer Science at Bristol.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Pixelify+Sans:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -524,7 +528,7 @@ document.addEventListener('click',skip);
 document.addEventListener('keydown',skip);
 document.getElementById('rep').onclick=function(e){e.stopPropagation();play()};
 addEventListener('resize',function(){fxSize();if(boxEl&&state==='intro'){buildFrame();buildBox();buildHeader();setProg(0)}});
-function instant(){paper.classList.add('fast');paper.classList.remove('boot','lock');blue.style.display='none';render(FULL);state='done';document.getElementById('skip').style.opacity=0;startBlink();requestAnimationFrame(function(){requestAnimationFrame(function(){paper.classList.remove('fast')})})}
+function instant(){['box','pcn','hd','tg0','tg1'].forEach(function(id){var e=document.getElementById(id);if(e)e.classList.add('gone')});paper.classList.add('fast');paper.classList.remove('boot','lock');blue.style.display='none';render(FULL);state='done';document.getElementById('skip').style.opacity=0;startBlink();requestAnimationFrame(function(){requestAnimationFrame(function(){paper.classList.remove('fast')})})}
 if(window.ARR){instant()}else{(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){play()})}
 })();
 </script>
